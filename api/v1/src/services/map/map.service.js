@@ -9,8 +9,7 @@ module.exports = function (app) {
 
   const options = {
     name: 'map',
-    Model,
-    paginate
+    Model
   };
 
   // Initialize our service with any options it requires

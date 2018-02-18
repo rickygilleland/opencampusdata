@@ -5,11 +5,24 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const map = sequelizeClient.define('map', {
-    text: {
-      type: DataTypes.STRING,
+  const map = sequelizeClient.define('schools', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false
+    },
+    name: {
+	    type: DataTypes.STRING,
+	    allowNull: false
+    },
+    latitude: {
+	    type: DataTypes.STRING
+    },
+    longitude: {
+	    type: DataTypes.STRING
     }
+  }, {
+	  timestamps: false
   }, {
     hooks: {
       beforeCount(options) {
