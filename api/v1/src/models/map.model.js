@@ -5,33 +5,11 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const schools = sequelizeClient.define('schools', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
+  const map = sequelizeClient.define('map', {
+    text: {
+      type: DataTypes.STRING,
       allowNull: false
-    },
-    name: {
-	    type: DataTypes.STRING,
-	    allowNull: false
-    },
-    city: {
-	    type: DataTypes.STRING
-    },
-    state: {
-	    type: DataTypes.STRING
-    },
-    zip: {
-	    type: DataTypes.STRING
-    },
-    latitude: {
-	    type: DataTypes.STRING
-    },
-    longitude: {
-	    type: DataTypes.STRING
     }
-  }, {
-	  timestamps: false
   }, {
     hooks: {
       beforeCount(options) {
@@ -41,10 +19,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  schools.associate = function (models) {
+  map.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return schools;
+  return map;
 };
