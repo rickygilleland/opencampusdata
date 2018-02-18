@@ -1,8 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+/* eslint-disable no-console */
+const logger = require('winston');
+const app = require('./app');
+const port = app.get('port');
+const server = app.listen(port);
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+process.on('unhandledRejection', (reason, p) =>
+  logger.error('Unhandled Rejection at: Promise ', p, reason)
+);
+
+server.on('listening', () =>
+  logger.info('Feathers application started on http://%s:%d', app.get('host'), port)
+);
