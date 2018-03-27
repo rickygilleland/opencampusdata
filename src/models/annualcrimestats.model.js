@@ -5,33 +5,24 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const schools = sequelizeClient.define('schools', {
+  const schools = sequelizeClient.define('annualcrimestats', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false
     },
-    name: {
-	    type: DataTypes.STRING,
+    schoolsId: {
+	    type: DataTypes.INTEGER,
 	    allowNull: false
     },
-    city: {
+    type: {
 	    type: DataTypes.STRING
     },
-    state: {
-	    type: DataTypes.STRING
+    year: {
+	    type: DataTypes.INTEGER
     },
-    zip: {
-	    type: DataTypes.STRING
-    },
-    url: {
-	    type: DataTypes.STRING
-    },
-    latitude: {
-	    type: DataTypes.STRING
-    },
-    longitude: {
-	    type: DataTypes.STRING
+    data: {
+	    type: DataTypes.JSON
     }
   }, {
 	  timestamps: false
